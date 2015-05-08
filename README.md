@@ -1,2 +1,3 @@
 # niubilety
-my work method in this projecte
+This project to record my working method
+
