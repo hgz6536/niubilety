@@ -1,0 +1,6 @@
+server {
+        listen 80;
+        server_name me2.tv www.me2.tv *.me2.tv;
+        root /data/me2.tv/www;
+        access_log /data/logs/nginx/me2.tv.access.log access;
+}

@@ -1,0 +1,55 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+#----------------mysql_write-------------------
+192.168.2.188  dbserver_tingbook_write
+192.168.2.188  dbserver_pay_write
+192.168.2.188  dbserver_user_write
+192.168.2.188  dbserver_weather_write
+192.168.2.188  dbserver_weibo_write
+192.168.2.188  dbserver_dev_write
+192.168.2.188  dbserver_rom_write
+192.168.2.188  dbserver_bbs_write
+192.168.2.188  dbserver_stats_write
+192.168.2.188  dbserver_zhuanti_write
+192.168.2.188  dbserver_puti_write
+192.168.2.188  dbserver_ad_write
+192.168.2.188  dbserver_unicom_write
+192.168.2.188  dbserver_boxdiy_write
+192.168.2.188  dbserver_freebuy_write
+192.168.2.188  dbserver_hdquan_write
+192.168.2.188  dbserver_music_write
+192.168.2.188  dbserver_vo_obj_write
+192.168.2.188  dbserver_me2_obj_write
+192.168.2.188  dbserver_boss_obj_write
+#----------------mysql_read--------------------
+192.168.2.199  dbserver_freebuy_read
+192.168.2.199  dbserver_tingbook_read
+192.168.2.199  dbserver_pay_read
+192.168.2.199  dbserver_user_read
+192.168.2.199  dbserver_weather_read
+192.168.2.199  dbserver_weibo_read
+192.168.2.199  dbserver_dev_read
+192.168.2.199  dbserver_rom_read
+192.168.2.199  dbserver_stats_read
+192.168.2.199  dbserver_bbs_read
+192.168.2.199  dbserver_zhuanti_read
+192.168.2.199  dbserver_puti_read
+192.168.2.199  dbserver_ad_read
+192.168.2.199  dbserver_unicom_read
+192.168.2.199  dbserver_boxdiy_read
+192.168.2.199  dbserver_tongji_read
+192.168.2.199  dbserver_music_read
+192.168.2.199  dbserver_vo_obj_read
+192.168.2.199  dbserver_me2_obj_read
+192.168.2.199  dbserver_boss_obj_read
+#---------------memcached----------------------
+192.168.2.91 memcache.server1
+192.168.2.92 memcache.server2
+192.168.2.93 memcache.server3
+192.168.2.101 memcache.server4
+192.168.2.93 gearman_mem_server1
+192.168.2.101 gearman_mem_server2
+#--------------gearman_server-----------------
+192.168.2.150 job.server1
+192.168.2.161 job.server2
+
