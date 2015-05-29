@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 #from fabric.operations import *
+from fabric.contrib.files import *
 from fabric.api import *
 from config import Get_data
 from fabric.contrib.console import confirm
@@ -47,6 +48,12 @@ def download(s = '', d = ''):
 	warn_only=True
     ):
         get(s, d)
+
+def testf(f = ''):
+    if exists(f):
+        print 'file extsts'
+    else:
+        print 'file not extsts'
 
 def test():
     with settings(
