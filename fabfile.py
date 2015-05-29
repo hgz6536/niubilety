@@ -55,6 +55,20 @@ def testf(f = ''):
     else:
         print 'file not extsts'
 
+def addcron(time = '', job = ''):
+    if exists('addcronfile'):
+        run('rm -rf addcronfile')
+    with prefix('crontab -l >> addcronfile'):
+        run('echo "%s %s" >> addcronfile' % (time,job))
+    run('crontab addcronfile')
+
+def delcron(key = ''):
+    if exists('delcronfile'):
+        run('rm -rf delcronfile')
+    with prefix('crontab -l >>delcronfile'):
+        run("sed -i '/%s/d' delcronfile" % (key))
+    run('crontab delcronfile')
+
 def test():
     with settings(
 	hide('running', 'stdout', 'stderr', 'output'),
