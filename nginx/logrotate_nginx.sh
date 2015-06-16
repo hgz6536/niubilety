@@ -14,7 +14,7 @@ fi
 
 #now delete old bakup log
 Old_day=`date +%Y%m%d --date='3 days ago'`
-testlog=`/bin/find ./ -name *-$Old_day|wc -l`
+testlog=`/bin/find ./ -name \*-$Old_day|wc -l`
 if [ $testlog != 0 ];then
   rm -rf *-$Old_day
  else
