@@ -1,2 +1,0 @@
-https://bugs.launchpad.net/ubuntu/+source/python-scipy/+bug/1621803
-apt install --reinstall python\*-decorator
