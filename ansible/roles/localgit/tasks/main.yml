@@ -1,0 +1,4 @@
+---
+  - name: local pull
+    command: chdir=/etc/ansible/deploy git pull
+    connection: local

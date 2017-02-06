@@ -1,0 +1,8 @@
+---
+  - name: Check '{{ ngx_rpm }}'
+    stat: path=/usr/local/src/deploy/rpm/{{ ngx_rpm }}
+    register: ngxrpm_stat
+
+  - name: rpm install
+    shell: cd /usr/local/src/deploy/rpm/ && rpm -ivh '{{ ngx_rpm }}' --nodeps --force
+    when: ngxrpm_stat.stat.exists == True

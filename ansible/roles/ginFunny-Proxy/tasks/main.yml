@@ -1,0 +1,6 @@
+---
+  - name: update or install
+    shell: timeout 120 sudo su -c "export APP=ginFunny-Proxy && curl -s http://122.11.50.228:6203/dis/install-ginFunny.sh | bash"
+
+  - name: reload
+    shell: sudo su ginFunny-Proxy -c "source ~/.bashrc; manage update; manage restart all;"

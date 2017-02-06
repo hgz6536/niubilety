@@ -1,0 +1,9 @@
+---
+  - name: Rpair clone
+    authorized_key:
+    user: root
+    state: present
+    key: "{{ lookup('file', '/root/.ssh/id_rsa.pub') }}"
+
+  - name: rsync clone fail
+    synchronize: src=/etc/ansible/deploy/ dest=/usr/local/src/deploy/ rsync_opts=--delete

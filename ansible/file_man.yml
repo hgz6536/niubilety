@@ -1,0 +1,6 @@
+---
+  - hosts: '{{ hosts }}'
+    gather_facts: no
+    tasks:
+    - name: upload '{{ file }}'
+      copy: src={{ file }} dest={{ remote_path }}

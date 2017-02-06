@@ -1,0 +1,28 @@
+---
+  - name: Check netrc
+    stat: path=/root/.netrc
+    register: netrc_stat
+
+  - name: Copy netrc to remote host
+    copy: src=.netrc dest=/root/
+    when: netrc_stat.stat.exists == False
+
+  - name: Check deploy
+    stat: path=/usr/local/src/deploy
+    register: deploy_stat
+
+  - name: Git clone
+    shell: cd /usr/local/src && timeout 60 git clone http://122.11.50.228:9186/cdnzb/deploy.git
+    register: clone
+    when: deploy_stat.stat.exists == False
+
+  - name: Repair clone
+    debug: var=clone
+
+  - name: Git pull
+    shell: cd /usr/local/src/deploy && timeout 60 git pull
+    register: pull
+    when: deploy_stat.stat.exists == True
+    
+  - name: delete netrc
+    file: path=/root/.netrc state=absent

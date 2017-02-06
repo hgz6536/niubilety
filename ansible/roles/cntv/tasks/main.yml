@@ -1,0 +1,8 @@
+---
+  - name: Check '{{ pt_dir }}'
+    stat: path=/usr/local/src/deploy/cntv_update/{{ pt_dir }}/{{ date_version }}
+    register: pzstar_stat
+
+  - name: cntv update
+    shell: sh /usr/local/src/deploy/cntv_update/cntv_update.sh {{ pt_dir }} {{ date_version }}
+    when: pzstar_stat.stat.exists == True

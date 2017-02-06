@@ -1,0 +1,3 @@
+---
+  - name: nginx restart
+    shell: sh /usr/local/src/Nginx_restart.sh

@@ -1,0 +1,14 @@
+---
+  - name: Git clone
+    shell: cd /usr/local/src/ && [[ -d deploy ]] || timeout 60 git clone http://122.11.50.228:9186/cdnzb/deploy.git
+    register: clone
+ 
+  - name: Rpair clone
+    authorized_key:
+    user: root
+    state: present
+    key: "{{ lookup('file', '/root/.ssh/id_rsa.pub') }}"
+    when: clone.rc != 0
+  - name: rsync clone fail
+    synchronize: src=/etc/ansible/deploy/ dest=/usr/local/src/deploy/ rsync_opts=--delete
+    when: clone.rc != 0

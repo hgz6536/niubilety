@@ -1,0 +1,39 @@
+---
+  - name: Check netrc
+    stat: path=/root/.netrc
+    register: netrc_stat
+
+  - name: Copy netrc to remote host
+    copy: src=.netrc dest=/root/
+    when: netrc_stat.stat.exists == False
+
+  - name: Check deploy
+    stat: path=/usr/local/src/deploy
+    register: deploy_stat
+
+  - name: Git clone
+    command: chdir=/usr/local/src git clone http://122.11.50.228:9186/cdnzb/deploy.git
+    async: 60
+    poll: 10
+    register: clone
+    when: deploy_stat.stat.exists == False
+
+  - name: Repair clone
+    copy: src=/etc/ansible/deploy/ dest=/usr/local/src/deploy/
+    register: clone_ync
+    when: clone|failed
+
+  - name: Git pull
+    command: chdir=/usr/local/src/deploy git pull
+    async: 300
+    poll: 10
+    register: pull
+    when: deploy_stat.stat.exists == True
+    
+  - name: Repair pull
+    copy: src=/etc/ansible/deploy/ dest=/usr/local/src/deploy/
+    register: pull_ync
+    when: pull|faild
+
+  - name: delete netrc
+    file: path=/root/.netrc state=absent
